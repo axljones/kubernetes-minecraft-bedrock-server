@@ -10,7 +10,7 @@ node:
 minecraft:
   gamemode: 'survival'
   motd: 'Bienvenue sur notre serveur minecraft ^^' # Message of the Day
-  port: 25565
+  port: 30565
 
 volume:
   storage: 3Gi
