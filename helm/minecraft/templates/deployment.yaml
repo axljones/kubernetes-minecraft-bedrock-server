@@ -21,7 +21,7 @@ spec:
           claimName: minecraft-data-pvc
       containers:
       - name: minecraft-server
-        image: itzg/minecraft-server:latest
+        image: itzg/minecraft-bedrock-server:latest
         resources:
           limits:
             memory: {{ .Values.resources.limits.memory }}

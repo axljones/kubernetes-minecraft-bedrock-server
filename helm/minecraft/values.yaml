@@ -4,12 +4,12 @@
 
 # ********REQUIRED********
 node:
-  hostname: 'dell3' # Your kube node's hostname
+  hostname: '10.0.10.51' # Your kube node's hostname
 # ************************
 
 minecraft:
   gamemode: 'survival'
-  motd: 'Your super-cool, super-kube, minecraft server' # Message of the Day
+  motd: 'Bienvenue sur notre serveur minecraft ^^' # Message of the Day
   port: 25565
 
 volume:
