@@ -1,4 +1,4 @@
-Minecraft Server in Kubernetes
+Minecraft Bedrock Server in Kubernetes
 ==============
 
 This demonstrates how to run Minecraft in Kubernetes. It builds on the work of 
