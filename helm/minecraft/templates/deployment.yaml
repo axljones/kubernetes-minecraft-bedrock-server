@@ -1,4 +1,3 @@
-# docker run -d -it -v /path/on/host:/data -e EULA=TRUE -p 25565:25565 --name mc itzg/minecraft-server
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -38,6 +37,7 @@ spec:
             value: 'TRUE'
         ports:
         - containerPort: {{ .Values.minecraft.port }}
+          protocol: UDP
           name: minecraft
         volumeMounts:
           - name: minecraft-data
@@ -45,16 +45,31 @@ spec:
         readinessProbe:
           exec:
             command:
-            - mcstatus
-            - 127.0.0.1
-            - ping
+            - mc-monitor
+            - status-bedrock
           initialDelaySeconds: 30
           periodSeconds: 30
         livenessProbe:
           exec:
             command:
-            - mcstatus
-            - 127.0.0.1
-            - ping
+            - mc-monitor
+            - status-bedrock
           initialDelaySeconds: 30
           periodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minecraft-service
+  annotations:
+    oci.oraclecloud.com/load-balancer-type: "nlb"
+spec:
+  type: LoadBalancer
+  selector:
+    app: minecraft-server
+  ports:
+  - protocol:  {{ .Values.minecraft.protocol }}
+    port: {{ .Values.minecraft.port }}
+    targetPort: {{ .Values.minecraft.port }}
+    nodePort: {{ .Values.minecraft.nodeport }}
+
