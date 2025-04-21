@@ -78,6 +78,12 @@ If you chose option 1 in Step 3 then you do not need to specify a port when conn
 
 Othherwise, when you configure your minecraft server, connect to `{your external ipv4}:{the port your chose}` so for this examle if you chose port 30565 then you would connect to `192.168.1.203:30565`.
 
+### Step 6: Backup
+
+kubectl cp -n <namespace> <pod-name>:<path> <destination-on-local-system>
+
+Exemple:
+kubectl cp -n minecraft minecraft-server-b4959f4cd-ctppc:/data .\minecraft-backups\
 
 Invitation to Help
 ------

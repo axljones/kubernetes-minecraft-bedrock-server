@@ -35,6 +35,8 @@ spec:
             value: {{ .Values.minecraft.motd }}
           - name: ALLOW_FLIGHT
             value: 'TRUE'
+          - name: ALLOW_CHEATS
+            value: 'TRUE'
         ports:
         - containerPort: {{ .Values.minecraft.port }}
           protocol: UDP
